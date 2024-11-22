@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import RevealImage from "./components/RevealImage";
 
 function App() {
   return (
@@ -10,10 +11,7 @@ function App() {
           backgroundColor: "#F9FAF7",
         }}
       >
-        <mesh>
-          <boxGeometry />
-          <meshBasicMaterial color="red" />
-        </mesh>
+        <RevealImage imageTexture="./img/texture.webp" />
       </Canvas>
     </>
   );
