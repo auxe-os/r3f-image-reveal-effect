@@ -29,7 +29,7 @@ const RevealImage = ({ imageTexture }) => {
     }
   });
   const { width, height } = texture.image;
-  const scale = useAspect(width, height, 0.3);
+  const scale = useAspect(width, height, 0.25);
 
   return (
     <mesh scale={scale}>
