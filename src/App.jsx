@@ -1,9 +1,20 @@
+import { Canvas } from "@react-three/fiber";
+
 function App() {
   return (
     <>
-      <h1 className="text-center w-full mt-10 text-2xl font-bold">
-        ReactJS Boilerplate
-      </h1>
+      <Canvas
+        style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "#F9FAF7",
+        }}
+      >
+        <mesh>
+          <boxGeometry />
+          <meshBasicMaterial color="red" />
+        </mesh>
+      </Canvas>
     </>
   );
 }
