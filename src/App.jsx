@@ -6,6 +6,10 @@ import CodropsOverlay from "./components/CodropsOverlay";
 import RevealImage from "./components/RevealImage";
 
 function App() {
+  // FULLSCREEN MODE
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const handleFullScreen = () => setIsFullScreen(!isFullScreen);
+
   // REVEAL PROGRESS ANIMATION
   const [isRevealed, setIsRevealed] = useState(false);
   const revealProgress = useMotionValue(0);
@@ -30,15 +34,24 @@ function App() {
         <RevealImage
           imageTexture="./img/texture.webp"
           revealProgress={revealProgress}
+          isFullScreen={isFullScreen}
         />
       </Canvas>
 
-      <button
-        onClick={handleReveal}
-        className="absolute z-50 bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 bg-gray-800 text-white rounded-md"
-      >
-        SHOW/HIDE
-      </button>
+      <div className="flex items-center gap-4 absolute z-50 bottom-20 max-sm:bottom-44 left-1/2 -translate-x-1/2 text-nowrap">
+        <button
+          onClick={handleReveal}
+          className="px-4 py-2 bg-neutral-900 text-white rounded-md"
+        >
+          SHOW/HIDE
+        </button>
+        <button
+          onClick={handleFullScreen}
+          className="px-4 py-2 bg-neutral-900 text-white rounded-md"
+        >
+          TOGGLE FULLSCREEN
+        </button>
+      </div>
 
       <CodropsOverlay />
     </>

@@ -1,6 +1,6 @@
 const CodropsOverlay = () => {
   return (
-    <div className="fixed top-0 left-0 size-full flex flex-col justify-between p-10">
+    <div className="fixed top-0 left-0 size-full flex flex-col justify-between p-10 text-neutral-900">
       <div className="flex w-full gap-6 max-sm:gap-3 max-sm:text-sm items-center">
         <h1 className="font-semibold">R3F Shader Reveal Effect</h1>
         <a target="_blank" href="https://tympanus.net/codrops/?p=">
