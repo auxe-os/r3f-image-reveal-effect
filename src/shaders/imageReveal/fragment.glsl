@@ -1,5 +1,6 @@
 uniform sampler2D uTexture;
 uniform float uTime;
+uniform float uProgress;
 
 varying vec2 vUv;
 
@@ -14,7 +15,7 @@ void main()
     float strength = cnoise(vec3(displacedUv * 5.0, uTime * 0.2 ));
 
     // Radial gradient
-    float radialGradient = distance(vUv, vec2(0.5)) * 12.5 - 7.0;
+    float radialGradient = distance(vUv, vec2(0.5)) * 12.5 - 7.0 * uProgress;
     strength += radialGradient;
 
     // Clamp the value from 0 to 1 & invert it
@@ -24,6 +25,9 @@ void main()
     // Apply texture
     vec3 textureColor = texture2D(uTexture, vUv).rgb;
 
+    // Opacity animation
+    float opacityProgress = smoothstep(0.0, 0.7, uProgress);
+
     // FINAL COLOR
-    gl_FragColor = vec4(textureColor, strength);
+    gl_FragColor = vec4(textureColor, strength * opacityProgress);
 }
