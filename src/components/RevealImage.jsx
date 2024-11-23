@@ -1,5 +1,5 @@
 import { shaderMaterial, useAspect, useTexture } from "@react-three/drei";
-import { extend } from "@react-three/fiber";
+import { extend, useFrame } from "@react-three/fiber";
 import PropTypes from "prop-types";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -9,6 +9,7 @@ import imageRevealVertexShader from "../shaders/imageReveal/vertex.glsl";
 const ImageRevealMaterial = shaderMaterial(
   {
     uTexture: new THREE.Texture(),
+    uTime: 0,
   },
   imageRevealVertexShader,
   imageRevealFragmentShader,
@@ -30,6 +31,13 @@ const RevealImage = ({ imageTexture }) => {
   });
   const { width, height } = texture.image;
   const scale = useAspect(width, height, 0.25);
+
+  // UPDATING UNIFORMS
+  useFrame(({ clock }) => {
+    if (materialRef.current) {
+      materialRef.current.uTime = clock.elapsedTime;
+    }
+  });
 
   return (
     <mesh scale={scale}>
