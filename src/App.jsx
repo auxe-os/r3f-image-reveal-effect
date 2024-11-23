@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { animate } from "motion";
 import { useMotionValue } from "motion/react";
 import { useState } from "react";
+import CodropsOverlay from "./components/CodropsOverlay";
 import RevealImage from "./components/RevealImage";
 
 function App() {
@@ -34,10 +35,12 @@ function App() {
 
       <button
         onClick={handleReveal}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 px-4 py-2 bg-gray-800 text-white rounded-md"
+        className="absolute z-50 bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 bg-gray-800 text-white rounded-md"
       >
         SHOW/HIDE
       </button>
+
+      <CodropsOverlay />
     </>
   );
 }
