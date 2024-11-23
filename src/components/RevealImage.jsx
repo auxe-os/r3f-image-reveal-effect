@@ -1,6 +1,5 @@
 import { shaderMaterial, useAspect, useTexture } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
-import { useControls } from "leva";
 import PropTypes from "prop-types";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -22,7 +21,7 @@ const ImageRevealMaterial = shaderMaterial(
 
 extend({ ImageRevealMaterial });
 
-const RevealImage = ({ imageTexture }) => {
+const RevealImage = ({ imageTexture, revealProgress }) => {
   const materialRef = useRef();
 
   // LOADING TEXTURE & HANDLING ASPECT RATIO
@@ -34,16 +33,11 @@ const RevealImage = ({ imageTexture }) => {
   const { width, height } = texture.image;
   const scale = useAspect(width, height, 0.25);
 
-  // LEVA TO CONTROL REVEAL PROGRESS
-  const { revealProgress } = useControls({
-    revealProgress: { value: 0, min: 0, max: 1 },
-  });
-
   // UPDATING UNIFORMS
   useFrame(({ clock }) => {
     if (materialRef.current) {
       materialRef.current.uTime = clock.elapsedTime;
-      materialRef.current.uProgress = revealProgress;
+      materialRef.current.uProgress = revealProgress.get();
     }
   });
 
@@ -59,4 +53,5 @@ export default RevealImage;
 
 RevealImage.propTypes = {
   imageTexture: PropTypes.string.isRequired,
+  revealProgress: PropTypes.number.isRequired,
 };
