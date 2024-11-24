@@ -32,7 +32,7 @@ function App() {
         }}
       >
         <RevealImage
-          imageTexture="./img/texture.webp"
+          imageTexture="./img/textureupscaled.webp"
           revealProgress={revealProgress}
           isFullScreen={isFullScreen}
         />

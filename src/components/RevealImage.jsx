@@ -1,7 +1,7 @@
 import { shaderMaterial, useAspect, useTexture } from "@react-three/drei";
 import { extend, useFrame, useThree } from "@react-three/fiber";
 import PropTypes from "prop-types";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import imageRevealFragmentShader from "../shaders/imageReveal/fragment.glsl";
 import imageRevealVertexShader from "../shaders/imageReveal/vertex.glsl";
@@ -11,6 +11,8 @@ const ImageRevealMaterial = shaderMaterial(
     uTexture: new THREE.Texture(),
     uTime: 0,
     uProgress: 0,
+    uImageRes: new THREE.Vector2(1.0, 1.0),
+    uRes: new THREE.Vector2(1.0, 1.0),
   },
   imageRevealVertexShader,
   imageRevealFragmentShader,
@@ -41,6 +43,18 @@ const RevealImage = ({
   const { viewport } = useThree();
   const fullScreenScale = [viewport.width, viewport.height, 1];
 
+  // UPDATING UNIFORMS ON RESIZE TO MAINTAIN ASPECT RATIO
+  useEffect(() => {
+    const viewportScale = [viewport.width, viewport.height, 1];
+
+    if (materialRef.current) {
+      materialRef.current.uRes.set(
+        isFullScreen ? viewportScale[0] : scale[0],
+        isFullScreen ? viewportScale[1] : scale[1]
+      );
+    }
+  }, [isFullScreen, scale, viewport.width, viewport.height]);
+
   // UPDATING UNIFORMS
   useFrame(({ clock }) => {
     if (materialRef.current) {
@@ -61,6 +75,6 @@ export default RevealImage;
 
 RevealImage.propTypes = {
   imageTexture: PropTypes.string.isRequired,
-  revealProgress: PropTypes.number.isRequired,
+  revealProgress: PropTypes.object.isRequired,
   isFullScreen: PropTypes.bool,
 };

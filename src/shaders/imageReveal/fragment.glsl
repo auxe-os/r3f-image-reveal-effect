@@ -1,13 +1,19 @@
 uniform sampler2D uTexture;
 uniform float uTime;
 uniform float uProgress;
+uniform vec2 uRes;
+uniform vec2 uImageRes;
 
 varying vec2 vUv;
 
 #include ../includes/perlin3dNoise.glsl
+#include ../includes/coverUV.glsl
 
 void main()
 {
+    // New UV to prevent image stretching on fullscreen mode
+    vec2 newUv = CoverUV(vUv, uRes, uImageRes);
+
     // Displace the UV
     vec2 displacedUv = vUv + cnoise(vec3(vUv * 5.0, uTime * 0.1));
 
@@ -23,7 +29,7 @@ void main()
     strength = 1.0 - strength;
 
     // Apply texture
-    vec3 textureColor = texture2D(uTexture, vUv).rgb;
+    vec3 textureColor = texture2D(uTexture, newUv).rgb;
 
     // Opacity animation
     float opacityProgress = smoothstep(0.0, 0.7, uProgress);
