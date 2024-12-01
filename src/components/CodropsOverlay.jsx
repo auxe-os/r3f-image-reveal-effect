@@ -1,6 +1,11 @@
-const CodropsOverlay = () => {
+const CodropsOverlay = ({ isDarkMode }) => {
   return (
-    <div className="fixed top-0 left-0 w-full flex flex-col justify-between p-7 text-white text-xs z-30">
+    <div
+      className="fixed top-0 left-0 w-full flex flex-col justify-between p-7 text-xs z-30"
+      style={{
+        color: isDarkMode ? "#fff" : "#000",
+      }}
+    >
       <div className="flex flex-col w-full gap-4 max-sm:gap-2">
         <div className="flex w-full gap-6 max-sm:gap-3 max-sm:text-sm items-center">
           <h1 className="font-semibold">R3F Shader Reveal Effect</h1>
@@ -10,13 +15,19 @@ const CodropsOverlay = () => {
           <a target="_blank" href="https://tympanus.net/codrops/demos/">
             All demos
           </a>
-          <a target="_blank" href="https://github.com/colindmg/r3f-image-reveal-effect">
+          <a
+            target="_blank"
+            href="https://github.com/colindmg/r3f-image-reveal-effect"
+          >
             GitHub
           </a>
         </div>
 
         <nav className="flex items-center w-full gap-6 max-sm:gap-1 max-sm:flex-col max-sm:items-start max-sm:text-sm underline">
-          <a target="_blank" href="https://tympanus.net/codrops/demos/?tag=glsl">
+          <a
+            target="_blank"
+            href="https://tympanus.net/codrops/demos/?tag=glsl"
+          >
             #glsl
           </a>
           <a

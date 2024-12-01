@@ -10,6 +10,10 @@ function App() {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const handleFullScreen = () => setIsFullScreen(!isFullScreen);
 
+  // DARK/LIGHT MODE
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const handleDarkMode = () => setIsDarkMode(!isDarkMode);
+
   // REVEAL PROGRESS ANIMATION
   const [isRevealed, setIsRevealed] = useState(true);
   const revealProgress = useMotionValue(1);
@@ -29,7 +33,7 @@ function App() {
         style={{
           width: "100vw",
           height: "100vh",
-          backgroundColor: "#000",
+          backgroundColor: isDarkMode ? "#000" : "#F9FAF7",
         }}
       >
         <RevealImage
@@ -51,9 +55,15 @@ function App() {
         >
           Toggle Fullscreen
         </button>
+        <button
+          onClick={handleDarkMode}
+          className="px-4 py-2 bg-neutral-800 text-white text-sm rounded-md"
+        >
+          Dark/light
+        </button>
       </div>
 
-      <CodropsOverlay />
+      <CodropsOverlay isDarkMode={isDarkMode} />
     </>
   );
 }

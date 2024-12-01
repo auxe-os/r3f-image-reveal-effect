@@ -52,8 +52,9 @@ const RevealImage = ({
         isFullScreen ? viewportScale[0] : scale[0],
         isFullScreen ? viewportScale[1] : scale[1]
       );
+      materialRef.current.uImageRes.set(width, height);
     }
-  }, [isFullScreen, scale, viewport.width, viewport.height]);
+  }, [isFullScreen, scale, viewport.width, viewport.height, width, height]);
 
   // UPDATING UNIFORMS
   useFrame(({ clock }) => {
