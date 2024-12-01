@@ -11,8 +11,8 @@ function App() {
   const handleFullScreen = () => setIsFullScreen(!isFullScreen);
 
   // REVEAL PROGRESS ANIMATION
-  const [isRevealed, setIsRevealed] = useState(false);
-  const revealProgress = useMotionValue(0);
+  const [isRevealed, setIsRevealed] = useState(true);
+  const revealProgress = useMotionValue(1);
 
   const handleReveal = () => {
     animate(revealProgress, isRevealed ? 0 : 1, {
@@ -24,11 +24,12 @@ function App() {
 
   return (
     <>
-      <Canvas className="z-10"
+      <Canvas
+        className="z-10"
         style={{
           width: "100vw",
           height: "100vh",
-          backgroundColor: "#000"
+          backgroundColor: "#000",
         }}
       >
         <RevealImage
@@ -37,7 +38,7 @@ function App() {
           isFullScreen={isFullScreen}
         />
       </Canvas>
-      <div className="z-30 flex items-center gap-4 absolute z-50 bottom-7 max-sm:bottom-44 left-1/2 -translate-x-1/2 text-nowrap">
+      <div className="flex items-center gap-4 absolute z-50 bottom-7 max-sm:bottom-44 left-1/2 -translate-x-1/2 text-nowrap">
         <button
           onClick={handleReveal}
           className="px-4 py-2 bg-neutral-800 text-white text-sm rounded-md"

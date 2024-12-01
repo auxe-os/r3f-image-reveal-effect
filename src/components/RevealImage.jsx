@@ -37,7 +37,7 @@ const RevealImage = ({
     }
   });
   const { width, height } = texture.image;
-  const scale = useAspect(width, height, 0.25);
+  const scale = useAspect(width, height, 0.2);
 
   // GETTING VIEWPORT SIZE
   const { viewport } = useThree();
