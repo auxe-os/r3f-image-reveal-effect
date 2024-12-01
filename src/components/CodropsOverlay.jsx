@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const CodropsOverlay = ({ isDarkMode }) => {
   return (
     <div
@@ -58,6 +60,10 @@ const CodropsOverlay = ({ isDarkMode }) => {
       </div>
     </div>
   );
+};
+
+CodropsOverlay.propTypes = {
+  isDarkMode: PropTypes.bool,
 };
 
 export default CodropsOverlay;
