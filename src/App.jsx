@@ -11,7 +11,7 @@ function App() {
   const handleFullScreen = () => setIsFullScreen(!isFullScreen);
 
   // DARK/LIGHT MODE
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const handleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   // REVEAL PROGRESS ANIMATION

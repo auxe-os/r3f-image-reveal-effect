@@ -4,9 +4,9 @@ _A simple yet pretty cool image reveal effect made with React-Three-Fiber/Drei a
 
 ![Thumbnail](./public/img/THUMBNAIL.gif)
 
-[Article on Codrops](https://tympanus.net/codrops/?p=)
+[Article on Codrops](https://tympanus.net/codrops/?p=83030)
 
-[Demo](https://tympanus.net/Development/.../)
+[Demo](https://tympanus.net/Tutorials/R3FImageReveal/)
 
 ## Installation
 
@@ -28,11 +28,11 @@ npm run build
 
 ## Credits
 
-- Image found on [Cosmos](https://www.cosmos.so/e/1439548207)
+- Image generated with [Midjourney](https://www.midjourney.com/)
 
 ## Misc
 
-Follow Colin: [Twitter](http://www.x.com/colindmg), [Linkedin](https://www.linkedin.com/in/colindmg/), [GitHub](https://github.com/colindmg)
+Follow Colin: [X](http://www.x.com/colindmg), [Linkedin](https://www.linkedin.com/in/colindmg/), [GitHub](https://github.com/colindmg)
 
 Follow Codrops: [Bluesky](https://bsky.app/profile/codrops.bsky.social), [Facebook](http://www.facebook.com/codrops), [GitHub](https://github.com/codrops), [Instagram](https://www.instagram.com/codropsss/), [X](http://www.x.com/codrops)
 
