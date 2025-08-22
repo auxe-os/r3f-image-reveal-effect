@@ -26,6 +26,20 @@ or
 npm run build
 ```
 
+## Replacing the Image
+
+Want to use your own image? Check out our comprehensive documentation:
+
+- **[Image Replacement Guide](./IMAGE_REPLACEMENT_GUIDE.md)** - Step-by-step instructions, supported formats, and best practices
+- **[Technical Image Guide](./TECHNICAL_IMAGE_GUIDE.md)** - In-depth technical details about image loading, performance optimization, and troubleshooting
+
+**Quick Start:**
+1. Add your image to `public/img/` folder
+2. Update the path in `src/App.jsx`: 
+   ```jsx
+   imageTexture="./img/your-image.jpg"  // WebP, JPEG, PNG all supported
+   ```
+
 ## Credits
 
 - Image generated with [Midjourney](https://www.midjourney.com/)
